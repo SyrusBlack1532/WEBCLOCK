@@ -1,0 +1,22 @@
+API nằm trong thư mục control/customer
+Ông làm web thì bỏ vô view/customer cho giống 3 lớp nha
+
+GET:  http://localhost:81/WebMNM/control/customer/user/read.php : Chọn toàn bô dữ liệu trong bảng user
+
+GET:  http://localhost:81/WebMNM/control/customer/user/show.php : Chọn user theo id
+(vd:  http://localhost:81/WebMNM/control/customer/user/show.php?id=1 : là chọn user có id =1)
+(này là lấy id theo $_GET, nếu ông không dùng cái này được thì còn 1 cách khác nữa t5 gặp tui sửa)
+
+POST: http://localhost:81/WebMNM/control/customer/user/create.php: tạo user mới 
+
+PUT: http://localhost:81/WebMNM/control/customer/user/update.php: sửa thông tin user 
+
+DELETE: http://localhost:81/WebMNM/control/customer/user/delete.php xóa user
+
+Các bảng khác đều có 5 link như trên chỉ thay user
+vd : bảng product: http://localhost:81/WebMNM/control/customer/product/read.php
+
+*Bảng order có thêm
+GET:  http://localhost:81/WebMNM/control/customer/order/showLastID.php : Lấy id mới nhất được thêm vào
+(dùng để lấy id mới thêm vào bảng order để có thể dùng thêm vào orderID cho bản dt_order hay payment)
+
