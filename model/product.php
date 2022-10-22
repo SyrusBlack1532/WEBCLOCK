@@ -72,4 +72,13 @@ class Product
         $result = $db->data_execute($sql);
         return $result;
     }
+
+    public function SelectAllLimit10($startProduct) {
+        $db = new Db();
+        
+        $sql = "SELECT * FROM `product`LIMIT $startProduct, 10";
+        
+        $result = $db->data_execute($sql);
+        return $result;
+    }
 }

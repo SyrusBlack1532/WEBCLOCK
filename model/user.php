@@ -26,9 +26,9 @@ class User
     
     public function Add() {
         $db = new Db();
-        
+        $pass = password_hash($this->password, PASSWORD_DEFAULT);
         $sql = "INSERT INTO `user` (`username`, `password`, `fullname`, `address`, `numberPhone`, `email`)
-                VALUES ('$this->username', '$this->password', '$this->fullname', '$this->address', '$this->numberPhone', '$this->email') ";
+                VALUES ('$this->username', '$pass', '$this->fullname', '$this->address', '$this->numberPhone', '$this->email') ";
         
         $result = $db->nodata_execute($sql);
         return $result;
@@ -36,9 +36,8 @@ class User
 
     public function Update($id) {
         $db = new Db();
-        
-        $sql = "UPDATE `user` SET `username`='$this->username', `password`='$this->password', `fullname`='$this->fullname', 
-                `address`='$this->address', `numberPhone`='$this->numberPhone', `email`='$this->email' WHERE `id`='$id' ";
+        $pass = password_hash($this->password, PASSWORD_DEFAULT);
+        $sql = "UPDATE `user` SET  `password`='$pass' WHERE `id`='$id' ";
         
         $result = $db->nodata_execute($sql);
         return $result;
