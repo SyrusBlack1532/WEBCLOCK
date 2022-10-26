@@ -1,0 +1,7 @@
+RewriteEngine On
+
+RewriteRule "listUser.html" "listUser.php"
+
+RewriteRule "^selectUserById.php/([0-9]+)$" "selectUserById.php?id=$1"
+
+RewriteRule "^selectProductById.php/([0-9]+)$" "selectProductById.php?id=$1"
