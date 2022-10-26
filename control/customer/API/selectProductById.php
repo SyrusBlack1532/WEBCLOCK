@@ -27,7 +27,12 @@ if($num > 0){
         'description' => $description
     );
         
-    print_r(json_encode($item));
+    echo json_encode($item);
+}else{
+    $result = array(
+        'message' => 'Dont have product'
+    );
+    echo json_encode($result);
 }
 
 ?>

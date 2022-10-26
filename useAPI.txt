@@ -16,3 +16,18 @@ GET: http://localhost:81/WebMNM/control/customer/API/listProduct.php : danh sác
 +Trả về danh sách các sản phẩm theo thứ tự 10 sản phẩm 1 trang
 (VD: http://localhost:81/WebMNM/control/customer/API/listProduct.php?page=1  Là trả về sản phẩm 1-10)
 (VD: http://localhost:81/WebMNM/control/customer/API/listProduct.php?page=2  Là trả về sản phẩm 11-20)
+
+GET: http://localhost:81/WebMNM/control/customer/API/selectProductById.php: tìm sản phẩm theo id
++Trả về thông tin 1 sản phẩm
++Trả về message Dont have product nếu không tồn tại id product truyền vào
+(VD: http://localhost:81/WebMNM/control/customer/API/selectProductById.php/1 trả về sản phẩm 1)
+
+
+GET: http://localhost:81/WebMNM/control/customer/API/selectUserById.php: tìm user theo id
++Trả về thông tin 1 user
++Trả về message Dont have user nếu không tồn tại id user truyền vào
+(VD: http://localhost:81/WebMNM/control/customer/API/selectUserById.php/1 trả về user 1)
+
+PUT: http://localhost:81/WebMNM/control/customer/API/updateUser.php: cập nhật thông tin khách hàng
++Truyền vào toàn bộ thông tin khách hàng nhưng không update id và username
++Trả về message Update success 

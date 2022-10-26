@@ -20,4 +20,8 @@ $email = $data->email;
 $user = new User($username, $password, $fullname, $address, $numberPhone, $email);
 $update = $user->Update($id);
 
+$result = array(
+    'message' => 'Update success'
+);
+echo json_encode($result);
 ?>

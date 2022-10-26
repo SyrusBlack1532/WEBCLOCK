@@ -37,7 +37,7 @@ class User
     public function Update($id) {
         $db = new Db();
         $pass = password_hash($this->password, PASSWORD_DEFAULT);
-        $sql = "UPDATE `user` SET  `password`='$pass' WHERE `id`='$id' ";
+        $sql = "UPDATE `user` SET  `password`='$pass', `fullname`=$fullname, `address`=$address, `numberPhone`=$numberPhone, `email`=$email WHERE `id`='$id' ";
         
         $result = $db->nodata_execute($sql);
         return $result;

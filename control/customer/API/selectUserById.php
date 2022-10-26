@@ -33,7 +33,12 @@ if($num > 0){
         'email' => $email
     );
         
-    print_r(json_encode($item));
+    echo json_encode($item);
+}else{
+    $result = array(
+        'message' => 'Dont have user'
+    );
+    echo json_encode($result);
 }
 
 ?>
