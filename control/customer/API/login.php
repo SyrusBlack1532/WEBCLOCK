@@ -28,25 +28,44 @@ if($num > 0){
     while($row = $read->fetch(PDO::FETCH_ASSOC)){
         extract($row);
 
-        $item = array(
-            'user' => [
-                'id' => $id,
+        //trả về id
+        $itemID = array(
+            'id' => $id
+        );
+
+        //trả về thông tin
+        
+        $itemTemp = array(
+            
+            'username' => $username,
+            //'password' => $password,// ko hien pasword cho khach
+            'fullname' => $fullname,
+            'address' => $address,
+            'numberPhone' => $numberPhone,
+            'email' => $email
+            
+        );
+        //kiem tra tai khoan va mat khau
+        if(($username == $tempuser) && (password_verify('123',$password))){
+            //jwt
+            $secret_key = "Hello World";
+            $token=JWT::encode($itemID, $secret_key, 'HS256');
+
+            //thông tin để đẩy cả token vào
+            $item = array(
+                'token' => $token,
                 'username' => $username,
                 //'password' => $password,// ko hien pasword cho khach
                 'fullname' => $fullname,
                 'address' => $address,
                 'numberPhone' => $numberPhone,
                 'email' => $email
-            ]
-        );
-        //kiem tra tai khoan va mat khau
-        if(($username == $tempuser) && (password_verify('123',$password))){
-            //jwt
-            $secret_key = "Hello World";
-            $token=JWT::encode($item, $secret_key, 'HS256');
+                
+            );
             $result = array(
                 'message' => 'Login success',
-                'token' => $token
+                'is_success' => 'true',
+                'user' => $item
             );
 
             array_push($list, $result);
@@ -58,7 +77,8 @@ if($num > 0){
     //sai tai khoan hay mat khau
     if($temp == 0){
         $result = array(
-            'message' => 'Username or password is wrong'
+            'message' => 'Username or password is wrong',
+            'is_success' => 'False'
         );
         array_push($list, $result);
         echo json_encode($list);

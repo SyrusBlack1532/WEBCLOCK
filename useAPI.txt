@@ -14,6 +14,7 @@ GET: http://localhost:81/WebMNM/control/customer/API/listCategory.php : danh sá
 
 GET: http://localhost:81/WebMNM/control/customer/API/listProduct.php : danh sách sản phẩm có phân trang
 +Trả về danh sách các sản phẩm theo thứ tự 10 sản phẩm 1 trang
++Trả về tổng số trang nằm trong key totalPage ở mỗi product
 (VD: http://localhost:81/WebMNM/control/customer/API/listProduct.php?page=1  Là trả về sản phẩm 1-10)
 (VD: http://localhost:81/WebMNM/control/customer/API/listProduct.php?page=2  Là trả về sản phẩm 11-20)
 

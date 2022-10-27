@@ -8,7 +8,7 @@ include_once("../../../model/category.php");
 
 $productID = isset($_GET['id']) ? $_GET['id'] :die();
 
-$product = new Product("","","","","","","");
+$product = new Product("","","","","","","","","","");
 $read = $product->SelectById($productID);
 
 $num = $read->rowCount();
@@ -32,10 +32,13 @@ if($num > 0){
         'nameBrand' => $nameBrand,
         'productName' => $productName,
         'price' => $price,
+        'priceAfter' => $priceAfter,
         'amount' => $amount,
         'origin' => $origin,
         'image' => $image,
-        'description' => $description
+        'description' => $description,
+        'title' => $title,
+        'is_sale' => $is_sale
     );
     
 

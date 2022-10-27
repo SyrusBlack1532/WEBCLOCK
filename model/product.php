@@ -9,28 +9,34 @@ class Product
     public $brandID;
     public $productName;
     public $price;
+    public $priceAfter;
     public $amount;
     public $origin;
     public $image;
     public $description;
+    public $title;
+    public $is_sale;
 
-    public function __construct( $brandID, $productName, $price, $amount, $origin, $image, $description)
+    public function __construct( $brandID, $productName, $price, $priceAfter, $amount, $origin, $image, $description, $title, $is_sale)
     {
        
         $this->brandID = htmlspecialchars(strip_tags($brandID));
         $this->productName = htmlspecialchars(strip_tags($productName));
         $this->price = htmlspecialchars(strip_tags($price));
+        $this->priceAfter = htmlspecialchars(strip_tags($priceAfter));
         $this->amount = htmlspecialchars(strip_tags($amount));
         $this->origin = htmlspecialchars(strip_tags($origin));
         $this->image = htmlspecialchars(strip_tags($image));   
         $this->description = htmlspecialchars(strip_tags($description));      
+        $this->title = htmlspecialchars(strip_tags($title));
+        $this->is_sale = htmlspecialchars(strip_tags($is_sale));
     }
     
     public function Add() {
         $db = new Db();
         
-        $sql = "INSERT INTO `product` (`brandID`, `productName`, `price`, `amount`, `origin`, `image`, `description`)
-                VALUES ('$this->brandID', '$this->productName', '$this->price', '$this->amount', '$this->origin', '$this->image', '$this->description')";
+        $sql = "INSERT INTO `product` (`brandID`, `productName`, `price`, `priceAfter`, `amount`, `origin`, `image`, `description`, `title`, `is_sale`)
+                VALUES ('$this->brandID', '$this->productName', '$this->price', '$this->priceAfter', '$this->amount', '$this->origin', '$this->image', '$this->description', '$this->title', '$this->is_sale')";
         
         $result = $db->nodata_execute($sql);
         return $result;
@@ -39,8 +45,8 @@ class Product
     public function Update($id) {
         $db = new Db();
         
-        $sql = "UPDATE `product` SET `brandID`='$this->brandID', `productName`='$this->productName', `price`='$this->price', 
-                `amount`='$this->amount', `origin`='$this->origin', `image`='$this->image', `description`='$this->description' WHERE `id`='$id' ";
+        $sql = "UPDATE `product` SET `brandID`='$this->brandID', `productName`='$this->productName', `price`='$this->price', `priceAfter`='$this->priceAfter',
+                `amount`='$this->amount', `origin`='$this->origin', `image`='$this->image', `description`='$this->description', `title`='$this->title', `is_sale`='$this->is_sale' WHERE `id`='$id' ";
         
         $result = $db->nodata_execute($sql);
         return $result;
