@@ -32,3 +32,13 @@ GET: http://localhost:81/WebMNM/control/customer/API/selectUserById.php: tìm us
 PUT: http://localhost:81/WebMNM/control/customer/API/updateUser.php: cập nhật thông tin khách hàng
 +Truyền vào toàn bộ thông tin khách hàng nhưng không update id và username
 +Trả về message Update success 
+
+GET: http://localhost:81/WebMNM/control/customer/API/listProduct.php : danh sách sản phẩm có phân trang
++Trả về danh sách các sản phẩm theo thứ tự 10 sản phẩm 1 trang
++Trả về tổng số trang nằm trong key totalPage ở mỗi product
++các trường gồm:
+-page : trang
+-title: bán chay hay mới (=hot hay = new)
+-is_sale: đang giảm giá (=1)
+-brandID: mã thương hiệu (VD: 1 là Casio...)
+-search: những gì khách nhập tìm, có search thì sẽ hủy brandID

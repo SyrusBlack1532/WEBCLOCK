@@ -5,21 +5,43 @@ header('Content-type: application/json');
 include_once("../../../config/db.class.php");
 include_once("../../../model/product.php");
 
-$page = isset($_GET['page']) ? $_GET['page'] :die();
+$page = isset($_GET['page']) ? $_GET['page'] : 1;
+
 
 $product = new Product("","","","","","","","","","");
-//Lấy tổng số trang
-$all = $product->SelectAll();
-$totalRow = $all->rowCount();
-$totalPage = floor($totalRow / 10) + 1;
+
+
+
+//Xử lý
+// page là mặc đĩnh luôn có
+$title = isset($_GET['title']) ? $_GET['title'] : -1;
+$sale = isset($_GET['is_sale']) ? $_GET['is_sale'] : -1;
+$brand = isset($_GET['brandID']) ? $_GET['brandID'] : -1;
+$search = isset($_GET['search']) ? $_GET['search'] : -1;
+$sort = isset($_GET['sort']) ? $_GET['sort'] : -1;
+
+//từ search nhảy về brandID
+if($search == ""){
+    $search = -1;
+}
+
+//từ brandID nhảy về search
+if($brand== ""){
+    $brand = -1;
+}
+
+
 
 //trả về list 20 sản phẩm cho phân trang
 $limit = $page * 10;
 $startProduct = $limit - 10; 
 
-$read = $product->SelectAllLimit10($startProduct);
-
+//$read = $product->SelectAllLimit10($startProduct);
+$read = $product->SelectMoreLimit10($startProduct, $title, $sale, $brand, $search, $sort);
 $num = $read->rowCount();
+
+//Lấy tổng số trang
+$totalPage = floor($num / 10) + 1;
 
 if($num > 0){
     
@@ -40,11 +62,12 @@ if($num > 0){
             'description' => $description,
             'title' => $title,
             'is_sale' => $is_sale,
-            'totalPage' => $totalPage
+            
         );
 
-        array_push($list['product'], $item);
+        array_push($list['product'], $item);     
     }
+    $list['totalPage'] = $totalPage;
 
     echo json_encode($list);
 }

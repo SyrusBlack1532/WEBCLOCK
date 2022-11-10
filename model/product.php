@@ -87,4 +87,74 @@ class Product
         $result = $db->data_execute($sql);
         return $result;
     }
+
+    public function SelectMoreLimit10($startProduct, $title, $sale, $brand, $search, $sort) {
+        $first = 0;
+
+        $temptitle="";
+        $tempsale="";        
+        $tempbrand="";
+        $tempsearch="";
+        $tempsort="";
+
+        //title
+        if($title != -1){
+            if($first == 0){
+                $temptitle="WHERE `title` LIKE '%".$title."%'";
+                $first++;
+            }else{
+                $temptitle="AND `title` LIKE '%".$title."%'";
+            }   
+        }
+
+        //sale
+        if($sale != -1){
+            if($first == 0){
+                $tempsale="WHERE `is_sale`=".$sale;
+                $first++;
+            }else{
+                $tempsale="AND `is_sale`=".$sale;
+            }   
+        }
+
+        //Search
+        if($search != -1){
+            if($first == 0){
+                $tempsearch="WHERE concat(`productName`,' ',`origin`,' ',`description`) LIKE '%".$search."%'";
+                $first++;
+            }else{
+                $tempsearch="AND concat(`productName`,' ',`origin`,' ',`description`) LIKE '%".$search."%'";
+            }   
+        }
+
+        //brandID
+        if($brand != -1){
+            if($first == 0){
+                $tempbrand="WHERE `brandID`=".$brand;
+                $first++;
+            }else{
+                $tempbrand="AND `brandID`=".$brand;
+            } 
+        }
+
+
+        //sort
+        if($sort != -1){           
+            $tempsort="ORDER BY `price` ".$sort;
+        }
+
+
+        $db = new Db();
+
+        /*
+        SELECT * FROM Khachhang
+        ORDER BY Quocgia DESC, KhachhangID ASC
+        LIMIT 50,10
+        */
+
+        $sql = "SELECT * FROM `product` ".$temptitle." ".$tempsale." ".$tempbrand." ".$tempsearch." ".$tempsort." "."LIMIT $startProduct, 10";
+        
+        $result = $db->data_execute($sql);
+        return $result;
+    }
 }
