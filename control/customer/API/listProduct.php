@@ -20,7 +20,7 @@ $brand = isset($_GET['brandID']) ? $_GET['brandID'] : -1;
 $search = isset($_GET['search']) ? $_GET['search'] : -1;
 $sort = isset($_GET['sort']) ? $_GET['sort'] : -1;
 
-//từ search nhảy về brandID
+/*//từ search nhảy về brandID
 if($search == ""){
     $search = -1;
 }
@@ -28,7 +28,7 @@ if($search == ""){
 //từ brandID nhảy về search
 if($brand== ""){
     $brand = -1;
-}
+}*/
 
 
 
@@ -41,7 +41,9 @@ $read = $product->SelectMoreLimit10($startProduct, $title, $sale, $brand, $searc
 $num = $read->rowCount();
 
 //Lấy tổng số trang
-$totalPage = floor($num / 10) + 1;
+$sql = $product->SelectMore($title, $sale, $brand, $search, $sort);
+$countpage = $sql->rowCount();
+$totalPage = floor($countpage / 10) + 1;
 
 if($num > 0){
     
