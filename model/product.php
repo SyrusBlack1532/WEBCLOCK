@@ -210,7 +210,7 @@ class Product
 
         //sort
         if($sort != -1){           
-            $tempsort="ORDER BY `price` ".$sort;
+            $tempsort="ORDER BY `priceAfter` ".$sort;
         }
 
 
