@@ -20,15 +20,17 @@ $brand = isset($_GET['brandID']) ? $_GET['brandID'] : -1;
 $search = isset($_GET['search']) ? $_GET['search'] : -1;
 $sort = isset($_GET['sort']) ? $_GET['sort'] : -1;
 
-/*//từ search nhảy về brandID
-if($search == ""){
+//từ search nhảy về brandID
+if($search == '""'){
     $search = -1;
+   
 }
 
 //từ brandID nhảy về search
-if($brand== ""){
+if($brand== '""'){
     $brand = -1;
-}*/
+    
+}
 
 
 
