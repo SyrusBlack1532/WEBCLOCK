@@ -1,58 +1,47 @@
 {
-    "order":[
-        {   
-            "userID": 1,
-            "username": "tester24",
-            "date": "2001-01-01",
-            "totalQuantity": 4,
-            "totalPrice": 10000
-            
-        }
-    ],
-  "order_detail" : [
+      
+    "userID": 1,
+    "username": "tester24",
+    "totalQuantity": 4,
+    "totalPrice": 10000,
+    "count": 2,    
+        
+    
+  "cart" : [
       {
-            "id":1,
-            "quantity": 10,
-            "price": 1000
+            
+        "id": 1,
+        "brandID": 1,
+        "productName": "CASIO MTP-1215A-7B2DF – NAM – QUARTZ (PIN) – DÂY KIM LOẠI",
+        "price": 1086000,
+        "priceAfter": 1000000,
+        "amount": 10,
+        "origin": "Nhật Bản",
+        "image": "https://cdn3.dhht.vn/wp-content/uploads/2017/08/MTP-1215A-7B2DF.jpg",
+        "description": "Đồng hồ Casio MTP-1215A-7B2DF với mặt số tròn truyền thống, kim chỉ được phủ phản quang dễ nhìn trong đêm, vạch chỉ giờ phủ màu đen nổi bật, dây đeo kim loại nam tính lịch lãm.",
+        "title": "Hot",
+        "is_sale": 1,
+        "quantity": 3
 
-        },
-        {
-            "id":2,
-            "quantity": 20,
-            "price": 2000
-        },
-        {
-            "id":3,
-            "quantity": 30,
-            "price": 3000
-        },
-        {
-            "id":4,
-            "quantity": 40,
-            "price": 4000
-        }
+       },
+       {
+	"id": 2,
+	"brandID": 1,
+	"productName": "CASIO EQS -920DB-1BVUDF – SOLAR  – DÂY KIM LOẠI",
+	"price": 4534000,
+	"priceAfter": 4334000,
+	"amount": 10,
+	"origin": "Nhật Bản",
+	"image": "https://cdn3.dhht.vn/wp-content/uploads/2019/07/150_EQS-920DB-1BVUDF-699x699.jpg",
+	"description": "Phong cách thiết kế ấn tượng nhờ vào lớp viền đen nổi bật ngay trên mặt số, bên dưới nền là bộ vỏ bạc trắng khiến sản phẩm trở thành chiếc đồng hồ nam cứng cáp\r\n",
+	"title": "Hot",
+	"is_sale": 1
+	}
   ]
 }
 
-Tui cần ông gửi tui cấu trúc như trên.
-
-userID với username thì cái login tui mới cho ông rồi đó
-
-Trong đó thì totalQuantity là số loại sản phẩm của đơn hàng đó
-VD khách mua 4 cái đồng hồ CASIO BGA thì totalQuantity vẫn là 1 chứ ko phải 4
-   khách mua 4 cái đồng hồ CASIO BGA và 5 cái đồng hồ CASIO BEM thì
-totalQuantity vẫn là 2 chứ ko phải 9
+count là số item có trong cart
 
 
-totalPrice thì tổng tiền của đơn hàng ( ông tính nha)
 
-
-trong order_detail là thông tin sản phẩm khách mua
-Tui chỉ cần:
-		id (là productID)
-	    	quantity (là số lượng của loại sản phẩm)
-		price (là tổng giá của món đó) (ông tính luôn nha )
-VD: khách mua 4 cái đồng hồ CASIO BGA và 5 cái đồng hồ CASIO BEM thì 
-	BGA---- quantity =4, price = giá sản phẩm * 4	
-	BEM---- quantity =5, price = giá sản phẩm * 5
 

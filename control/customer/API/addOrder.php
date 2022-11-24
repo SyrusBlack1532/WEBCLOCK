@@ -11,13 +11,14 @@ include_once("../../../model/dt_order.php");
 $data = json_decode(file_get_contents("php://input"));
 
 //lay thong tin order
-$order = $data->order;
-$userID = $order[0]->userID;
-$username = $order[0]->username;
-$date = $order[0]->date;
-$totalQuantity = $order[0]->totalQuantity;
-$totalPrice = $order[0]->totalPrice;
+
+$userID = $data->userID;
+$username = $data->username;
+$date = date("Y-m-d");
+$totalQuantity = $data->totalQuantity;
+$totalPrice = $data->totalPrice;
 $status = 0;
+
 
 //chen vao order
 $orderAdd = new Order($userID, $username, $date, $totalQuantity, $totalPrice, $status);
@@ -31,12 +32,13 @@ while($row = $findMaxOrderID->fetch(PDO::FETCH_ASSOC)){
 }
 
 //thong tin dt_order
-$dt_order = $data->order_detail;
+$count = $data->count;
+$dt_order = $data->cart;
 $i =0;
-while($i < $totalQuantity){
+while($i < $count){
     $productID = $dt_order[$i]->id;
     $quantity = $dt_order[$i]->quantity;
-    $price = $dt_order[$i]->price;
+    $price = $dt_order[$i]->priceAfter;
 
     $dt_orderAdd = new Dt_order($orderID, $productID, $quantity, $price);
     $add2 = $dt_orderAdd->Add();
