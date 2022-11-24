@@ -43,5 +43,12 @@
 count là số item có trong cart
 
 
+POST: http://localhost:81/WebMNM/control/customer/API/SelectOrderById.php : list order theo userID
++gửi vào userID.
++trả về list order
 
+
+POST: http://localhost:81/WebMNM/control/customer/API/SelectDetailById.php : list orderdetail
++gửi vào orderID.
++trả về list orderdetail
 

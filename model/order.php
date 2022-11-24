@@ -72,6 +72,15 @@ class Order
         return $result;
     }
 
+    public function SelectByUserId($userID) {
+        $db = new Db();
+        
+        $sql = "SELECT * FROM `orders` Where `userID`='$userID' ";
+        
+        $result = $db->data_execute($sql);
+        return $result;
+    }
+
     public function SelectMaxId() {
         $db = new DB();
         
