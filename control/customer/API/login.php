@@ -54,6 +54,7 @@ if($num > 0){
             //thông tin để đẩy cả token vào
             $item = array(
                 'token' => $token,
+                'id' => $id,
                 'username' => $username,
                 //'password' => $password,// ko hien pasword cho khach
                 'fullname' => $fullname,

@@ -1,0 +1,58 @@
+{
+    "order":[
+        {   
+            "userID": 1,
+            "username": "tester24",
+            "date": "2001-01-01",
+            "totalQuantity": 4,
+            "totalPrice": 10000
+            
+        }
+    ],
+  "order_detail" : [
+      {
+            "id":1,
+            "quantity": 10,
+            "price": 1000
+
+        },
+        {
+            "id":2,
+            "quantity": 20,
+            "price": 2000
+        },
+        {
+            "id":3,
+            "quantity": 30,
+            "price": 3000
+        },
+        {
+            "id":4,
+            "quantity": 40,
+            "price": 4000
+        }
+  ]
+}
+
+Tui cần ông gửi tui cấu trúc như trên.
+
+userID với username thì cái login tui mới cho ông rồi đó
+
+Trong đó thì totalQuantity là số loại sản phẩm của đơn hàng đó
+VD khách mua 4 cái đồng hồ CASIO BGA thì totalQuantity vẫn là 1 chứ ko phải 4
+   khách mua 4 cái đồng hồ CASIO BGA và 5 cái đồng hồ CASIO BEM thì
+totalQuantity vẫn là 2 chứ ko phải 9
+
+
+totalPrice thì tổng tiền của đơn hàng ( ông tính nha)
+
+
+trong order_detail là thông tin sản phẩm khách mua
+Tui chỉ cần:
+		id (là productID)
+	    	quantity (là số lượng của loại sản phẩm)
+		price (là tổng giá của món đó) (ông tính luôn nha )
+VD: khách mua 4 cái đồng hồ CASIO BGA và 5 cái đồng hồ CASIO BEM thì 
+	BGA---- quantity =4, price = giá sản phẩm * 4	
+	BEM---- quantity =5, price = giá sản phẩm * 5
+

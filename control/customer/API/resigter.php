@@ -71,6 +71,21 @@ if($num > 0){
         $result = array(
             'message' => 'Resigter success'
         );
+        
+        $item2 = [];
+        $tempaddress = "";
+        $item2 = array(
+            'user' => [
+                'id' => $id,
+                'username' => $tempuser,
+                'password' => $temppass,
+                'fullname' => $tempfullname,
+                'address' => $tempaddress,
+                'numberPhone' => $tempphone,
+                'email' => $tempemail
+            ]
+        );
+        array_push($list, $item2);
         array_push($list, $result);
         echo json_encode($list);
     } 

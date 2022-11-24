@@ -11,9 +11,10 @@ class Order
     public $date;
     public $totalQuantity;
     public $totalPrice;
+    public $status;
     
 
-    public function __construct( $userID, $username, $date, $totalQuantity, $totalPrice)
+    public function __construct( $userID, $username, $date, $totalQuantity, $totalPrice, $status)
     {
        
         $this->userID = htmlspecialchars(strip_tags($userID));
@@ -21,14 +22,14 @@ class Order
         $this->date = htmlspecialchars(strip_tags($date));
         $this->totalQuantity = htmlspecialchars(strip_tags($totalQuantity));
         $this->totalPrice = htmlspecialchars(strip_tags($totalPrice));
-             
+        $this->status = htmlspecialchars(strip_tags($status));   
     }
     
     public function Add() {
         $db = new Db();
         
-        $sql = "INSERT INTO `orders` (`userID`, `username`, `date`, `totalQuantity`, `totalPrice`)
-                VALUES ('$this->userID', '$this->username', '$this->date', '$this->totalQuantity', '$this->totalPrice') ";
+        $sql = "INSERT INTO `orders` (`userID`, `username`, `date`, `totalQuantity`, `totalPrice`, `status`)
+                VALUES ('$this->userID', '$this->username', '$this->date', '$this->totalQuantity', '$this->totalPrice', '$this->status') ";
         
         $result = $db->nodata_execute($sql);
         return $result;
@@ -38,7 +39,7 @@ class Order
         $db = new Db();
         
         $sql = "UPDATE `orders` SET `userID`='$this->userID', `username`='$this->username', `date`='$this->date', 
-                `totalQuantity`='$this->totalQuantity', `totalPrice`='$this->totalPrice' WHERE `id`='$id' ";
+                `totalQuantity`='$this->totalQuantity', `totalPrice`='$this->totalPrice', `status`='$this->status' WHERE `id`='$id' ";
         
         $result = $db->nodata_execute($sql);
         return $result;
