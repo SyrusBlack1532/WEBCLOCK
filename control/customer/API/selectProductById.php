@@ -23,7 +23,8 @@ if($num > 0){
     $cate = new Category("");
     $sqlcate = $cate->SelectById($brandID);
     $row2 = $sqlcate->fetch(PDO::FETCH_ASSOC);
-    extract($row2);
+    $nameBrand = $row2['nameBrand'];
+    //extract($row2);
 
    
     $item = array(
