@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 10, 2022 at 02:54 PM
+-- Generation Time: Nov 25, 2022 at 09:53 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.2
 
@@ -84,7 +84,19 @@ CREATE TABLE `dt_order` (
 --
 
 INSERT INTO `dt_order` (`orderID`, `productID`, `quantity`, `price`) VALUES
-(1, 2, 1, 4334000);
+(1, 2, 1, 4334000),
+(7, 1, 10, 1000),
+(7, 2, 20, 2000),
+(7, 3, 30, 3000),
+(7, 4, 40, 4000),
+(8, 1, 10, 1000),
+(8, 2, 20, 2000),
+(8, 3, 30, 3000),
+(8, 4, 40, 4000),
+(10, 1, 3, 1000000),
+(10, 1, 3, 1000000),
+(10, 1, 3, 1000000),
+(10, 1, 3, 1000000);
 
 -- --------------------------------------------------------
 
@@ -98,15 +110,19 @@ CREATE TABLE `orders` (
   `username` varchar(200) CHARACTER SET utf8mb4 NOT NULL,
   `date` date NOT NULL,
   `totalQuantity` int(11) NOT NULL,
-  `totalPrice` float NOT NULL
+  `totalPrice` float NOT NULL,
+  `status` int(5) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `orders`
 --
 
-INSERT INTO `orders` (`id`, `userID`, `username`, `date`, `totalQuantity`, `totalPrice`) VALUES
-(1, 1, 'user1', '2022-10-09', 1, 1000000);
+INSERT INTO `orders` (`id`, `userID`, `username`, `date`, `totalQuantity`, `totalPrice`, `status`) VALUES
+(1, 1, 'user1', '2022-10-09', 1, 1000000, 0),
+(7, 1, 'tester24', '2001-01-01', 4, 10000, 0),
+(8, 1, 'tester24', '2001-01-01', 4, 10000, 0),
+(10, 1, 'tester24', '2022-11-24', 4, 10000, 0);
 
 -- --------------------------------------------------------
 
@@ -205,7 +221,8 @@ INSERT INTO `user` (`id`, `username`, `password`, `fullname`, `address`, `number
 (13, 'AAA', '$2y$10$HJ3L.tPkr8SWVtdJ3O7z3uCJzmMGHB1qV6VxMsrM05B819gmlLdGG', '', 'DADDADADAADDADAADD', 0, 'AAAAAA'),
 (14, 'tester22', '$2y$10$UUwfgAe8s.w4T3GlN3HmUuAC792G.vPBC6V8cN6uOL9zAD74eIwi6', 'The Tester', 'NO.22', 22, '123@gmail.com'),
 (15, 'tester23', '$2y$10$qfRUbpkdBXGXsYL/tbQsk.bQHlwoCUNYidihCfJSdodf07b2mwX0y', 'The Tester', 'NO.223', 223, '1233@gmail.com'),
-(16, 'tester24', '$2y$10$0vLXBD8ECCuMHNc3aY/lhOzZCI5EKILVzHacSXpNd/qA3kYiOHw2i', 'U9d9jNz', '', 123456789, 'aaa@gmail.com');
+(16, 'tester24', '$2y$10$0vLXBD8ECCuMHNc3aY/lhOzZCI5EKILVzHacSXpNd/qA3kYiOHw2i', 'U9d9jNz', '', 123456789, 'aaa@gmail.com'),
+(17, '', '$2y$10$3ySNKPyeDgt8bM3aGqwk6uTNDz6KDlBeHWmTt7AJWPlrK1ENroTkS', 'bYVRS1d', '', 0, '');
 
 --
 -- Indexes for dumped tables
@@ -278,7 +295,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `payment`
@@ -296,7 +313,7 @@ ALTER TABLE `product`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- Constraints for dumped tables
