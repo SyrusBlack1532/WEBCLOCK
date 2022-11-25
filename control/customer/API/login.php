@@ -46,7 +46,7 @@ if($num > 0){
             
         );
         //kiem tra tai khoan va mat khau
-        if(($username == $tempuser) && (password_verify('123',$password))){
+        if(($username == $tempuser) && (password_verify($temppass ,$password))){
             //jwt
             $secret_key = "Hello World";
             $token=JWT::encode($itemID, $secret_key, 'HS256');
