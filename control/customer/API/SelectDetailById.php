@@ -7,6 +7,7 @@ header('Access-Control-Allow-Headers: Access-Control-Allow-Headers, Content-type
 include_once("../../../config/db.class.php");
 include_once("../../../model/dt_order.php");
 include_once("../../../model/product.php");
+include_once("../../../model/order.php");
 
 $data = json_decode(file_get_contents("php://input"));
 $orderID = $data->orderID;
@@ -29,7 +30,7 @@ if($num > 0){
         extract($row2);
 
         // tinh tong gia
-        $totalPrice = $quantity*$price;
+        $rowPrice = $quantity*$price;
         $item = array(
             'orderID' => $orderID,
             'productID' => $productID,
@@ -37,11 +38,20 @@ if($num > 0){
             'price' => $price,
             'productName' => $productName,
             'image' => $image,
-            'totalPrice' => $totalPrice
+            'rowPrice' => $rowPrice
 
         );
         array_push($list['dt_order'], $item);
+
     }
+
+    $order = new Order("", "", "", "", "", "");
+    $read3 = $order->SelectById($orderID);
+    $row3 = $read3->fetch(PDO::FETCH_ASSOC);
+    extract($row3);
+    
+    $list['totalPrice'] = $totalPrice;
+    $list['totalCount'] = $totalQuantity;
 
     echo json_encode($list);
 }
