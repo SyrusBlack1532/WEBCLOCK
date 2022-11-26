@@ -30,12 +30,12 @@ if($num > 0){
         extract($row2);
 
         // tinh tong gia
-        $rowPrice = $quantity*$price;
+        $rowPrice = $quantity*$priceAfter;
         $item = array(
             'orderID' => $orderID,
             'productID' => $productID,
             'quantity' => $quantity,
-            'price' => $price,
+            'price' => $priceAfter,
             'productName' => $productName,
             'image' => $image,
             'rowPrice' => $rowPrice
